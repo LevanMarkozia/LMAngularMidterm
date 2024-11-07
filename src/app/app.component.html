@@ -1,0 +1,47 @@
+<title>Levan Markozia</title>
+<h1>Users that are over the age of 20:</h1>
+<div *ngFor="let user of users">
+  <div *ngIf="user.age>=20">{{user|json}}</div>
+</div>
+<br><hr><br>
+<app-user [parentUsersInput]="parentUsers" (childUserOutput)="sendData($event)"></app-user>
+<br><hr><br>
+<h1>Array from child component:</h1>
+<div *ngFor="let childUser of value">{{childUser|json}}</div>
+<br><hr><br>
+<div class="container-fluid">
+  <div *ngFor="let user of Users">{{user|json}}</div>
+  <form #userForm="ngForm">
+    <div class="form-group">
+      <label for="id">ID:</label>
+      <input type="number" name="id" class="form-control" #id="ngModel" [(ngModel)]="userModel.id" required [class.is-invalid]="id.invalid && id.touched">
+    </div>
+    <small class="text-danger" [class.d-none]="id.valid || id.untouched">Invalid ID.</small>
+    <div class="form-group">
+      <label for="firstname">First name:</label>
+      <input type="text" name="firstname" class="form-control" #firstname="ngModel" [(ngModel)]="userModel.firstname" required minlength="3" [class.is-invalid]="firstname.errors?.['minlength'] && firstname.touched">
+    </div>
+    <small class="text-danger" [class.d-none]="firstname.valid || firstname.untouched">First name should be longer than 3 characters.</small>
+    <div class="form-group">
+      <label for="lastname">Last name:</label>
+      <input type="text" name="lastname" class="form-control" #lastname="ngModel" [(ngModel)]="userModel.lastname" required minlength="3" [class.is-invalid]="lastname.errors?.['minlength'] && lastname.touched">
+    </div>
+    <small class="text-danger" [class.d-none]="lastname.valid || lastname.untouched">Last name should be longer than 3 characters.</small>
+    <div class="form-group">
+      <label for="dateofbirth">Date of birth:</label>
+      <input type="text" name="dateofbirth" class="form-control" #dateofbirth="ngModel" [(ngModel)]="userModel.dateofbirth" required [class.is-invalid]="dateofbirth.invalid && dateofbirth.touched">
+    </div>
+    <small class="text-danger" [class.d-none]="dateofbirth.valid || dateofbirth.untouched">This field cannot be empty.</small>
+    <div class="form-group">
+      <label for="phonenumber">Phone number:</label>
+      <input type="text" name="phonenumber" class="form-control" #phonenumber="ngModel" [(ngModel)]="userModel.phonenumber" required minlength="9" [class.is-invalid]="phonenumber.errors?.['minlength'] && phonenumber.touched">
+    </div>
+    <small class="text-danger" [class.d-none]="phonenumber.valid || phonenumber.untouched">Phone number should be longer than 9 characters.</small>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" name="email" class="form-control" #email="ngModel" [(ngModel)]="userModel.email" required minlength="8" [class.is-invalid]="email.errors?.['minlength'] && email.touched">
+    </div>
+    <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email should be longer than 8 characters.</small>
+  </form>
+  <button class="btn btn-primary" type="submit" (click)="addUser()">Add user</button>
+</div>

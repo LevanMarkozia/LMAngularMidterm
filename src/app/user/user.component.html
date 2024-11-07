@@ -1,0 +1,5 @@
+<h1>Array from parent component:</h1>
+<div *ngFor="let parentUser of parentUsersInput">{{parentUser|json}}</div>
+<br><hr><br>
+<div>{{displayValue}}</div>
+<button class="btn btn-primary" (click)="display()">Display array</button>
