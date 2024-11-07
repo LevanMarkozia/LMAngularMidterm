@@ -1,3 +1,4 @@
+# Need to run npm install ng first
 <<<<<<< HEAD
 # LMAngularMidterm
 Check GoogleDriveLink.txt
